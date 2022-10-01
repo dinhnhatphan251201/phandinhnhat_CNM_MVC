@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="index.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <div>
+                <form
+                    action="/"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    id="formMonHoc"
+                >
+                    <label for="maMonHoc">Ma Mon Hoc</label><br />
+                    <input type="text" id="maMonHoc" name="maMonHoc" /><br />
+                    <label for="tenMonHoc">Ten Mon Hoc</label><br />
+                    <input type="text" id="tenMonHoc" name="tenMonHoc" /><br />
+                    <label for="loaiMonHoc">Loai Mon Hoc</label><br />
+                    <input
+                        type="text"
+                        id="loaiMonHoc"
+                        name="loaiMonHoc"
+                    /><br />
+                    <label for="hocKy">Hoc Ky</label><br />
+                    <input type="text" id="hocKy" name="hocKy" /><br />
+                    <label for="khoa">Khoa</label><br />
+                    <input type="text" id="khoa" name="khoa" /><br />
+                    <button class="btnSubmit" type="submit">Add</button>
+                </form>
+            </div>
+
+            <table class="table">
+                <h1 class="header">Danh Sach Mon Hoc</h1>
+                <input type="submit" value="delete" />
+                <tr>
+                    <th>STT</th>
+                    <th>Ma</th>
+                    <th>Ten Mon Hoc</th>
+                    <th>Loai Mon Hoc</th>
+                    <th>Hoc Ky</th>
+                    <th>Khoa</th>
+                    <th>actions</th>
+                </tr>
+
+                <%for(let i = 0; i < data.length; i++) {%>
+                <tr>
+                    <td><%=i+1%></td>
+                    <td><%=data[i].maMonHoc%></td>
+                    <td><%=data[i].tenMonHoc%></td>
+                    <td><%=data[i].loaiMonHoc%></td>
+                    <td><%=data[i].hocKy%></td>
+                    <td><%=data[i].khoa%></td>
+                    <td>
+                        <form
+                            id="delete"
+                            action="/delete"
+                            method="POST"
+                            enctype="multipart/form-data"
+                        >
+                            <input
+                                type="hidden"
+                                name="maMonHoc"
+                                value="<%=data[i].maMonHoc%>"
+                            />
+                            <button type="submit">delete</button>
+                        </form>
+                    </td>
+                    <%}%>
+                </tr>
+
+                <!-- <tr>
+                    <td>1</td>
+                    <td>Toan</td>
+                    <td>Khoa hoc</td>
+                    <td>2</td>
+                    <td>cntt</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Toan</td>
+                    <td>Khoa hoc</td>
+                    <td>2</td>
+                    <td>cntt</td>
+                </tr> -->
+            </table>
+        </div>
+    </body>
+</html>
